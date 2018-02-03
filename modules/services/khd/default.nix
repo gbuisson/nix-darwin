@@ -46,8 +46,7 @@ in
     environment.etc."khdrc".text = cfg.khdConfig;
 
     launchd.user.agents.khd = {
-      path = [ cfg.package pkgs.kwm config.environment.systemPath ];
-
+      path = [ cfg.package pkgs.chunkwm.core config.environment.systemPath ];
       serviceConfig.ProgramArguments = [ "${cfg.package}/bin/khd" ]
         ++ optionals (cfg.khdConfig != "") [ "-c" "/etc/khdrc" ];
       serviceConfig.KeepAlive = true;
