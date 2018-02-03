@@ -4,7 +4,6 @@ with lib;
 
 let
   cfg = config.services.khd;
-
   i3Config = import ./i3.nix { inherit pkgs; };
 in
 
@@ -38,9 +37,7 @@ in
   };
 
   config = mkIf cfg.enable {
-
     services.khd.khdConfig = mkIf cfg.i3Keybindings i3Config;
-
     security.accessibilityPrograms = [ "${cfg.package}/bin/khd" ];
 
     environment.etc."khdrc".text = cfg.khdConfig;
